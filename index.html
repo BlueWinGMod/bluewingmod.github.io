@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full bg-slate-950 text-slate-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WinISO - Téléchargement d'ISO Windows</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-full flex flex-col justify-between font-sans">
+
+    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+                WinISO <span class="text-xs font-mono text-slate-500">v1.0</span>
+            </h1>
+            <span class="text-xs bg-slate-800 text-slate-400 px-2.5 py-1 rounded-full border border-slate-700">
+                Hébergé sur GitHub Pages
+            </span>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-3xl w-full mx-auto px-4 py-12">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Téléchargement d'ISO Windows officiels</h2>
+            <p class="mt-3 text-lg text-slate-400">Sélectionnez la version, l'édition et la langue pour obtenir votre lien.</p>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
+            
+            <div>
+                <label for="os" class="block text-sm font-medium text-slate-400 mb-2">1. Système d'exploitation</label>
+                <select id="os" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:outline-none focus:border-blue-500 transition-colors">
+                    <option value="">Choisir un OS...</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="edition" class="block text-sm font-medium text-slate-400 mb-2">2. Édition ou Version</label>
+                <select id="edition" disabled class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-500 cursor-not-allowed focus:outline-none focus:border-blue-500 transition-colors disabled:opacity-50">
+                    <option value="">En attente de l'OS...</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="arch" class="block text-sm font-medium text-slate-400 mb-2">3. Architecture</label>
+                <select id="arch" disabled class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-500 cursor-not-allowed focus:outline-none focus:border-blue-500 transition-colors disabled:opacity-50">
+                    <option value="">En attente de l'édition...</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="lang" class="block text-sm font-medium text-slate-400 mb-2">4. Langue</label>
+                <select id="lang" disabled class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-500 cursor-not-allowed focus:outline-none focus:border-blue-500 transition-colors disabled:opacity-50">
+                    <option value="">En attente de l'architecture...</option>
+                </select>
+            </div>
+
+            <div id="result-box" class="hidden pt-6 border-t border-slate-800 space-y-4 animate-fade-in">
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs space-y-2">
+                    <p><span class="text-slate-500">Fichier :</span> <span id="res-file" class="text-indigo-300 break-all"></span></p>
+                    <p><span class="text-slate-500">SHA-256 :</span> <span id="res-sha" class="text-emerald-400 break-all"></span></p>
+                </div>
+                <a id="download-btn" href="#" target="_blank" class="w-full block text-center bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold px-6 py-3.5 rounded-xl transition shadow-lg shadow-indigo-950/50">
+                    Télécharger l'ISO officielle
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-slate-900 bg-slate-950/80 text-center py-6 text-xs text-slate-500">
+        <p>Ce site ne stocke aucun fichier. Tous les téléchargements pointent vers des serveurs originaux ou vérifiés. Faites gaffe comme même et vérifiez les isos vous même avec VirusTotal et le hash</p>
+    </footer>
+
+    <script>
+        const isoDatabase = [
+            { os: "Windows XP", edition: "Professional (SP3)", arch: "x86", lang: "Français", file: "fr_windows_xp_professional_with_service_pack_3_x86_cd_x14-80428.iso", sha: "ad14bc471d440dbdfbe49c00b0314227318357eb", url: "https://archive.org/download/FrWindowsXpProfessionalWithServicePack3X86CdX1480428/fr_windows_xp_professional_with_service_pack_3_x86_cd_x14-80428.iso" },
+            { os: "Windows 7", edition: "Ultimate (SP1)", arch: "x64", lang: "Français", file: "fr_windows_7_ultimate_with_sp1_x64_dvd_u_677299.iso", sha: "6144da60098f447781b09b5523b0f592ba466bfb", url: "https://archive.org/download/fr_windows_7_ultimate_with_sp1_x64_dvd_u_677299_202004/fr_windows_7_ultimate_with_sp1_x64_dvd_u_677299.iso" },
+            { os: "Windows 10", edition: "22H2 (Home / Pro)", arch: "x64", lang: "Français", file: "Win10_22H2_French_x64v1.iso", sha: "3aa882c20a1df27756f709115f02905d21b7ff3d404d538e1f576e3d23194511", url: "https://software.download.prss.microsoft.com/db/Win10_22H2_French_x64v1.iso" },
+            { os: "Windows 11", edition: "23H2 (Multi-Edition)", arch: "x64", lang: "Français", file: "Win11_23H2_French_x64v2.iso", sha: "1c2a07c3... (exemple)", url: "https://software.download.prss.microsoft.com/db/Win11_23H2_French_x64v2.iso" }
+        ];
+
+        // Récupération des éléments HTML
+        const selectOs = document.getElementById('os');
+        const selectEdition = document.getElementById('edition');
+        const selectArch = document.getElementById('arch');
+        const selectLang = document.getElementById('lang');
+        const resultBox = document.getElementById('result-box');
+        const resFile = document.getElementById('res-file');
+        const resSha = document.getElementById('res-sha');
+        const downloadBtn = document.getElementById('download-btn');
+
+        // Initialisation : Charger les OS uniques
+        const uniqueOs = [...new Set(isoDatabase.map(item => item.os))];
+        uniqueOs.forEach(os => {
+            let opt = document.createElement('option');
+            opt.value = os;
+            opt.textContent = os;
+            selectOs.appendChild(opt);
+        });
+
+        // Événement 1 : Changement d'OS
+        selectOs.addEventListener('change', () => {
+            resetDropdowns([selectEdition, selectArch, selectLang]);
+            resultBox.classList.add('hidden');
+            
+            if (selectOs.value) {
+                const filtered = isoDatabase.filter(item => item.os === selectOs.value);
+                const editions = [...new Set(filtered.map(item => item.edition))];
+                enableDropdown(selectEdition, editions, "Choisir une édition...");
+            }
+        });
+
+        // Événement 2 : Changement d'Édition
+        selectEdition.addEventListener('change', () => {
+            resetDropdowns([selectArch, selectLang]);
+            resultBox.classList.add('hidden');
+
+            if (selectEdition.value) {
+                const filtered = isoDatabase.filter(item => item.os === selectOs.value && item.edition === selectEdition.value);
+                const architectures = [...new Set(filtered.map(item => item.arch))];
+                enableDropdown(selectArch, architectures, "Choisir une architecture...");
+            }
+        });
+
+        // Événement 3 : Changement d'Architecture
+        selectArch.addEventListener('change', () => {
+            resetDropdowns([selectLang]);
+            resultBox.classList.add('hidden');
+
+            if (selectArch.value) {
+                const filtered = isoDatabase.filter(item => 
+                    item.os === selectOs.value && 
+                    item.edition === selectEdition.value && 
+                    item.arch === selectArch.value
+                );
+                const languages = [...new Set(filtered.map(item => item.lang))];
+                enableDropdown(selectLang, languages, "Choisir une langue...");
+            }
+        });
+
+        // Événement 4 : Changement de Langue ➔ Affiche le résultat
+        selectLang.addEventListener('change', () => {
+            if (selectLang.value) {
+                const finalMatch = isoDatabase.find(item => 
+                    item.os === selectOs.value && 
+                    item.edition === selectEdition.value && 
+                    item.arch === selectArch.value &&
+                    item.lang === selectLang.value
+                );
+
+                if (finalMatch) {
+                    resFile.textContent = finalMatch.file;
+                    resSha.textContent = finalMatch.sha;
+                    downloadBtn.href = finalMatch.url;
+                    resultBox.classList.remove('hidden');
+                }
+            } else {
+                resultBox.classList.add('hidden');
+            }
+        });
+
+        // Fonctions utilitaires pour manipuler les dropdowns
+        function resetDropdowns(dropdowns) {
+            dropdowns.forEach(dropdown => {
+                dropdown.innerHTML = '<option value="">En attente du choix précédent...</option>';
+                dropdown.disabled = true;
+                dropdown.classList.replace('border-slate-700', 'border-slate-800');
+                dropdown.classList.replace('text-slate-200', 'text-slate-500');
+                dropdown.classList.add('cursor-not-allowed');
+            });
+        }
+
+        function enableDropdown(dropdown, items, defaultText) {
+            dropdown.innerHTML = `<option value="">${defaultText}</option>`;
+            items.forEach(item => {
+                let opt = document.createElement('option');
+                opt.value = item;
+                opt.textContent = item;
+                dropdown.appendChild(opt);
+            });
+            dropdown.disabled = false;
+            dropdown.classList.replace('border-slate-800', 'border-slate-700');
+            dropdown.classList.replace('text-slate-500', 'text-slate-200');
+            dropdown.classList.remove('cursor-not-allowed');
+        }
+    </script>
+</body>
+                  </html>
+  
