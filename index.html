@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Bordel en Ligne</title>
+    <title>BlueWinGMod</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -16,30 +17,35 @@
 </head>
 <body class="bg-zinc-100 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 transition-colors duration-300 font-sans antialiased selection:bg-red-500 selection:text-white">
 
+    <!-- LECTEUR AUDIO -->
     <audio id="bg-music" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
+    <!-- BARRE DE NAVIGATION -->
     <nav class="fixed w-full z-50 top-0 bg-zinc-100/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-300 dark:border-zinc-800 transition-colors duration-300">
         <div class="max-w-5xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
-                <a href="#" class="text-xl font-black uppercase tracking-widest text-red-600 dark:text-red-500 hover:opacity-80 transition">
-                    MON SITE
+                <a href="#" class="text-xl font-black uppercase tracking-widest text-red-600 dark:text-red-500">
+                    BLUEWINGMOD
                 </a>
                 
                 <div class="flex space-x-6 items-center">
-                    <a href="#projets" class="font-bold hover:text-red-500 transition">Mes trucs</a>
+                    <a href="#projets" class="font-bold hover:text-red-500 transition">Projets</a>
+                    <a href="#guides" class="font-bold hover:text-red-500 transition">Guides</a>
                     
                     <div class="h-6 w-px bg-zinc-400 dark:bg-zinc-700"></div>
 
-                    <button id="music-toggle" class="p-2 rounded-lg hover:bg-zinc-300 dark:hover:bg-zinc-800 transition" title="Mettre un peu de son">
+                    <!-- Bouton Musique -->
+                    <button id="music-toggle" class="p-2 rounded-lg hover:bg-zinc-300 dark:hover:bg-zinc-800 transition" title="Lancer la musique">
                         <svg id="music-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </button>
 
-                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-zinc-300 dark:hover:bg-zinc-800 transition" title="Allumer/Éteindre la lumière">
+                    <!-- Bouton Thème -->
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-zinc-300 dark:hover:bg-zinc-800 transition" title="Changer de thème">
                         <svg id="moon-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <svg id="sun-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     </button>
@@ -48,57 +54,117 @@
         </div>
     </nav>
 
-    <section class="min-h-[80vh] flex flex-col justify-center items-start max-w-5xl mx-auto px-4 pt-20">
+    <!-- INTRO -->
+    <section class="min-h-[70vh] flex flex-col justify-center items-start max-w-5xl mx-auto px-4 pt-20">
         <h1 class="text-5xl md:text-7xl font-black uppercase tracking-tight mb-6">
-            Ouais, salut.
+            Zone de stockage.
         </h1>
         <p class="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 max-w-2xl mb-8 font-medium">
-            Bienvenue sur ma page. Je code des trucs quand j'ai le temps. La plupart du temps ça casse, mais quand ça marche, je le mets ici.
+            Ici je pose mes programmes et mes guides. Pas de fioritures, tout est dispo en dessous.
         </p>
-        <a href="#projets" class="bg-zinc-900 text-white dark:bg-white dark:text-zinc-950 px-6 py-3 font-bold uppercase tracking-wide hover:bg-red-600 dark:hover:bg-red-500 dark:hover:text-white transition-colors">
-            Voir mes projets de merde ↓
-        </a>
-    </section>
-
-    <section id="projets" class="py-20 bg-zinc-200 dark:bg-zinc-900 transition-colors duration-300">
-        <div class="max-w-5xl mx-auto px-4">
-            <h2 class="text-3xl md:text-5xl font-black uppercase mb-12 border-b-4 border-red-500 inline-block pb-2">Mes Projets</h2>
-        
-                <div class="bg-zinc-100 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-800 p-6 hover:border-red-500 dark:hover:border-red-500 transition-colors">
-                    <h3 class="text-2xl font-bold mb-2">Ce site web</h3>
-                    <p class="text-zinc-600 dark:text-zinc-400 mb-4">
-                        Une longue page qui scrolle. Y'a un mode sombre et de la musique parce que je trouvais ça marrant. C'est tout.
-                    </p>
-                    <span class="text-xs font-mono bg-zinc-300 dark:bg-zinc-800 px-2 py-1">HTML / CSS</span>
-                </div>
-
-                <div class="bg-zinc-100 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-800 p-6 hover:border-red-500 dark:hover:border-red-500 transition-colors">
-                    <h3 class="text-2xl font-bold mb-2">Clone d'OS.click (Abandonné)</h3>
-                    <p class="text-zinc-600 dark:text-zinc-400 mb-4">
-                        J'ai voulu refaire un site pour télécharger des ISO Windows et Linux. Ça m'a saoulé donc j'ai fait cette page à la place.
-                    </p>
-                    <span class="text-xs font-mono bg-zinc-300 dark:bg-zinc-800 px-2 py-1">JavaScript</span>
-                </div>
-
-                <div class="bg-zinc-100 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-800 p-6 hover:border-red-500 dark:hover:border-red-500 transition-colors flex items-center justify-center">
-                    <p class="text-zinc-500 dark:text-zinc-600 font-bold uppercase tracking-widest text-center">
-                        Espace vide pour un futur truc qui plantera
-                    </p>
-                </div>
-            </div>
+        <div class="flex gap-4">
+            <a href="#projets" class="bg-zinc-900 text-white dark:bg-white dark:text-zinc-950 px-6 py-3 font-bold uppercase tracking-wide hover:bg-red-600 dark:hover:bg-red-500 dark:hover:text-white transition-colors">
+                Les projets ↓
+            </a>
+            <a href="#guides" class="border-2 border-zinc-900 dark:border-white px-6 py-3 font-bold uppercase tracking-wide hover:bg-zinc-900 hover:text-white dark:hover:bg-white dark:hover:text-zinc-950 transition-all">
+                Les guides ↓
+            </a>
         </div>
     </section>
 
-    <footer class="bg-zinc-100 dark:bg-zinc-950 py-10 border-t border-zinc-300 dark:border-zinc-900 text-center">
+    <!-- SECTION PROJETS -->
+    <section id="projets" class="py-20 bg-zinc-200 dark:bg-zinc-900/50 transition-colors duration-300 border-t border-zinc-300 dark:border-zinc-800">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-black uppercase mb-12 border-b-4 border-red-500 inline-block pb-2">Dépôts & Programmes</h2>
+            
+            <div id="container-projets" class="grid md:grid-cols-2 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- SECTION GUIDES -->
+    <section id="guides" class="py-20 bg-zinc-100 dark:bg-zinc-950 transition-colors duration-300 border-t border-zinc-300 dark:border-zinc-800">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-black uppercase mb-12 border-b-4 border-red-500 inline-block pb-2">Guides & Tutoriels</h2>
+            
+            <div id="container-guides" class="space-y-8"></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-zinc-200 dark:bg-zinc-950 py-8 border-t border-zinc-300 dark:border-zinc-900 text-center">
         <p class="text-zinc-500 font-mono text-sm">
-            © <span id="year"></span>. Fait à l'arrache. 
+            © <span id="year"></span> BlueWinGMod.
         </p>
     </footer>
 
+    <!-- LA LOGIQUE DU SITE -->
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // MODE SOMBRE
+        // =========================================================================
+        // 🛠️ TES PROJETS ET GUIDES (C'EST ICI QUE TU MODIFIES)
+        // =========================================================================
+
+        const mesProjets = [
+            {
+                nom: "TinyBrowser",
+                badge: "Logiciel",
+                badgeColor: "bg-blue-600",
+                description: "Un tout petit navigateur internet ultra léger. Fait pour charger des pages rapidement sans consommer toute la RAM du PC.",
+                lien: "https://github.com/BlueWinGMod/TinyBrowser"
+            }
+            // Modèle pour ajouter un autre projet (enlève les // au début pour l'activer) :
+            // ,{ nom: "Nouveau Projet", badge: "Type", badgeColor: "bg-green-600", description: "Description ici.", lien: "https://github.com/..." }
+        ];
+
+        const mesGuides = [
+            {
+                titre: "Zone de test pour les guides",
+                date: "Récemment",
+                contenu: "Pour l'instant la zone est vide. Quand j'aurai des explications à donner sur mes outils ou des tutos à faire tourner, ça atterrira directement ici.<br><br>Pour ajouter un vrai guide, il suffit de modifier la liste 'mesGuides' tout en bas du code."
+            }
+            // Modèle pour ajouter un autre guide (enlève les // au début pour l'activer) :
+            // ,{ titre: "Titre du guide", date: "Date", contenu: "Ton texte ici. <br> Pour aller à la ligne, utilise la balise br." }
+        ];
+
+        // =========================================================================
+        // SYSTEME D'INJECTION AUTOMATIQUE
+        // =========================================================================
+        
+        // Injection des projets
+        const containerProjets = document.getElementById('container-projets');
+        mesProjets.forEach(p => {
+            containerProjets.innerHTML += `
+                <div class="bg-zinc-100 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-800 p-6 flex flex-col justify-between hover:border-red-500 dark:hover:border-red-500 transition-colors">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold">${p.nom}</h3>
+                            <span class="text-xs font-mono text-white px-2 py-0.5 rounded ${p.badgeColor}">${p.badge}</span>
+                        </div>
+                        <p class="text-zinc-600 dark:text-zinc-400 mb-6 text-sm">${p.description}</p>
+                    </div>
+                    <a href="${p.lien}" target="_blank" class="text-sm font-bold text-red-600 dark:text-red-500 hover:underline inline-flex items-center">
+                        Accéder au dépôt ↗
+                    </a>
+                </div>
+            `;
+        });
+
+        // Injection des guides
+        const containerGuides = document.getElementById('container-guides');
+        mesGuides.forEach(g => {
+            containerGuides.innerHTML += `
+                <div class="bg-zinc-200 dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 p-6 md:p-8 rounded-none border-l-4 border-l-red-500">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl md:text-2xl font-black uppercase">${g.titre}</h3>
+                        <span class="text-xs font-mono text-zinc-500">${g.date}</span>
+                    </div>
+                    <p class="text-zinc-700 dark:text-zinc-300 text-base leading-relaxed font-medium">${g.contenu}</p>
+                </div>
+            `;
+        });
+
+        // GESTION DU THÈME
         const themeToggleBtn = document.getElementById('theme-toggle');
         const darkIcon = document.getElementById('moon-icon');
         const lightIcon = document.getElementById('sun-icon');
@@ -120,19 +186,19 @@
             updateIcons();
         });
 
-        // LECTEUR MUSIQUE
+        // GESTION DE LA MUSIQUE
         const musicBtn = document.getElementById('music-toggle');
         const bgMusic = document.getElementById('bg-music');
         const musicIcon = document.getElementById('music-icon');
         let playing = false;
-        bgMusic.volume = 0.4;
+        bgMusic.volume = 0.3;
 
         musicBtn.addEventListener('click', () => {
             if (playing) {
                 bgMusic.pause();
                 musicIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>`;
             } else {
-                bgMusic.play();
+                bgMusic.play().catch(e => console.log("Lancement bloqué par le navigateur"));
                 musicIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>`;
             }
             playing = !playing;
