@@ -1,39 +1,276 @@
 <!DOCTYPE html>
-<html lang="fr" class="h-full bg-slate-950 text-slate-100">
+<html lang="fr" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WinISO - Téléchargement d'ISO Windows</title>
+    <title>Mon Espace Professionnel</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 500: '#3b82f6', 600: '#2563eb' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Animations personnalisées */
+        .fade-in { animation: fadeIn 1s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
-<body class="min-h-full flex flex-col justify-between font-sans">
+<body class="bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 font-sans antialiased">
 
-    <header class="border-b border-slate-800 bg-slate-900/50 backdrop-blur">
-        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-                WinISO <span class="text-xs font-mono text-slate-500">v1.0</span>
-            </h1>
-            <span class="text-xs bg-slate-800 text-slate-400 px-2.5 py-1 rounded-full border border-slate-700">
-                Hébergé sur GitHub Pages
-            </span>
-        </div>
-    </header>
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
 
-    <main class="flex-grow max-w-3xl w-full mx-auto px-4 py-12">
-        <div class="text-center mb-10">
-            <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Téléchargement d'ISO Windows officiels</h2>
-            <p class="mt-3 text-lg text-slate-400">Sélectionnez la version, l'édition et la langue pour obtenir votre lien.</p>
-        </div>
+    <nav class="fixed w-full z-50 top-0 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-gray-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#accueil" class="text-2xl font-black tracking-tighter bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+                    PORTFOLIO.
+                </a>
+                
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#apropos" class="text-sm font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition">À propos</a>
+                    <a href="#competences" class="text-sm font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition">Compétences</a>
+                    <a href="#projets" class="text-sm font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition">Projets</a>
+                    <a href="#faq" class="text-sm font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition">FAQ</a>
+                    
+                    <div class="h-6 w-px bg-gray-300 dark:bg-slate-700"></div>
 
-        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-xl space-y-6">
-            
-            <div>
-                <label for="os" class="block text-sm font-medium text-slate-400 mb-2">1. Système d'exploitation</label>
-                <select id="os" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-slate-200 focus:outline-none focus:border-blue-500 transition-colors">
-                    <option value="">Choisir un OS...</option>
-                </select>
+                    <button id="music-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-800 transition" title="Jouer/Pauser la musique">
+                        <svg id="music-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </button>
+
+                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-800 transition">
+                        <svg id="moon-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        <svg id="sun-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </button>
+                </div>
             </div>
+        </div>
+    </nav>
 
+    <section id="accueil" class="min-h-screen flex items-center justify-center pt-20">
+        <div class="max-w-4xl mx-auto px-4 text-center fade-in">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+                Bienvenue dans <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">mon univers</span>.
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-600 dark:text-slate-400 mb-10 max-w-3xl mx-auto">
+                Je conçois des solutions numériques modernes, performantes et élégantes. Découvrez mes projets et mon parcours ci-dessous.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#projets" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-lg shadow-blue-500/30">
+                    Voir mes projets
+                </a>
+                <a href="#apropos" class="bg-gray-200 hover:bg-gray-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-gray-900 dark:text-white px-8 py-4 rounded-full font-bold text-lg transition">
+                    En savoir plus
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="apropos" class="py-24 bg-gray-100 dark:bg-slate-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">Qui suis-je ?</h2>
+                    <p class="text-lg text-gray-600 dark:text-slate-400 mb-6 leading-relaxed">
+                        Passionné par la technologie et le design, je crée des expériences web immersives. Mon approche combine une esthétique minimaliste avec une architecture technique solide.
+                    </p>
+                    <p class="text-lg text-gray-600 dark:text-slate-400 leading-relaxed mb-8">
+                        Que ce soit pour du développement frontend interactif, de la gestion de bases de données complexes ou de l'administration système, je mets un point d'honneur à livrer un code propre et maintenable.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 border-t border-gray-300 dark:border-slate-800 pt-8">
+                        <div>
+                            <div class="text-4xl font-black text-blue-600 dark:text-blue-400">50+</div>
+                            <div class="text-sm text-gray-500 dark:text-slate-500 font-semibold uppercase mt-1">Projets achevés</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-black text-blue-600 dark:text-blue-400">100%</div>
+                            <div class="text-sm text-gray-500 dark:text-slate-500 font-semibold uppercase mt-1">Satisfaction</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative h-96 rounded-2xl overflow-hidden bg-gray-300 dark:bg-slate-800 shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Bureau setup" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="competences" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-4">Mes Compétences</h2>
+            <p class="text-xl text-gray-600 dark:text-slate-400 mb-16 max-w-2xl mx-auto">Les outils et technologies que j'utilise au quotidien pour donner vie aux idées.</p>
+            
+            <div class="grid md:grid-cols-3 gap-8 text-left">
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Développement Web</h3>
+                    <p class="text-gray-600 dark:text-slate-400">Création de sites ultra-rapides, responsives et accessibles utilisant les dernières technologies (HTML5, JS, Tailwind).</p>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Architecture Système</h3>
+                    <p class="text-gray-600 dark:text-slate-400">Déploiement, gestion de serveurs, conteneurisation et création de bases de données robustes.</p>
+                </div>
+                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-shadow">
+                    <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Optimisation SEO</h3>
+                    <p class="text-gray-600 dark:text-slate-400">Amélioration du référencement naturel pour garantir une visibilité maximale sur les moteurs de recherche.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projets" class="py-24 bg-gray-100 dark:bg-slate-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold mb-4 text-center">Travaux Récents</h2>
+            <p class="text-xl text-gray-600 dark:text-slate-400 mb-16 text-center">Une sélection de mes meilleurs projets.</p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="group relative rounded-2xl overflow-hidden bg-white dark:bg-slate-950 border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-300">
+                    <div class="h-48 bg-gray-300 dark:bg-slate-800 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Projet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-500 transition-colors">Plateforme E-Commerce</h3>
+                        <p class="text-gray-600 dark:text-slate-400 text-sm mb-4">Un site de vente en ligne complet avec gestion des paiements et tableau de bord administrateur.</p>
+                        <div class="flex gap-2">
+                            <span class="text-xs font-semibold bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">React</span>
+                            <span class="text-xs font-semibold bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative rounded-2xl overflow-hidden bg-white dark:bg-slate-950 border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-300">
+                    <div class="h-48 bg-gray-300 dark:bg-slate-800 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Projet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-500 transition-colors">Dashboard Analytique</h3>
+                        <p class="text-gray-600 dark:text-slate-400 text-sm mb-4">Interface de visualisation de données en temps réel pour le suivi des performances financières.</p>
+                        <div class="flex gap-2">
+                            <span class="text-xs font-semibold bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">Vue.js</span>
+                            <span class="text-xs font-semibold bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative rounded-2xl overflow-hidden bg-white dark:bg-slate-950 border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-300">
+                    <div class="h-48 bg-gray-300 dark:bg-slate-800 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80" alt="Projet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-500 transition-colors">App Finance Mobile</h3>
+                        <p class="text-gray-600 dark:text-slate-400 text-sm mb-4">Application de gestion budgétaire avec synchronisation bancaire sécurisée.</p>
+                        <div class="flex gap-2">
+                            <span class="text-xs font-semibold bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">Swift</span>
+                            <span class="text-xs font-semibold bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold mb-12 text-center">Questions Fréquentes</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-bold mb-2">Comment se déroule un projet type ?</h3>
+                    <p class="text-gray-600 dark:text-slate-400 text-sm">Nous commençons par une phase d'analyse de vos besoins, suivie d'une proposition de maquette. Une fois validée, le développement commence avec des retours réguliers jusqu'à la livraison finale.</p>
+                </div>
+                <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-bold mb-2">Quels sont vos délais habituels ?</h3>
+                    <p class="text-gray-600 dark:text-slate-400 text-sm">Cela dépend de la complexité du projet. Un site vitrine prend généralement entre 2 et 3 semaines, tandis qu'une application complexe peut nécessiter plusieurs mois.</p>
+                </div>
+                <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-6 rounded-2xl">
+                    <h3 class="text-lg font-bold mb-2">Proposez-vous de la maintenance ?</h3>
+                    <p class="text-gray-600 dark:text-slate-400 text-sm">Oui, je propose des forfaits de maintenance pour assurer la sécurité, les mises à jour et les petites évolutions de votre projet après sa mise en ligne.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white dark:bg-slate-950 border-t border-gray-200 dark:border-slate-900 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500 dark:text-slate-600 font-medium">
+            &copy; <span id="year"></span> Portfolio. Tous droits réservés. Construit avec passion.
+        </div>
+    </footer>
+
+    <script>
+        // Met à jour l'année dans le footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // LOGIQUE DU THÈME SOMBRE / CLAIR
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const darkIcon = document.getElementById('moon-icon');
+        const lightIcon = document.getElementById('sun-icon');
+        const html = document.documentElement;
+
+        // Fonction pour mettre à jour les icônes
+        function updateThemeIcons() {
+            if (html.classList.contains('dark')) {
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.add('hidden');
+            } else {
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            }
+        }
+
+        // Vérifie le thème initial
+        updateThemeIcons();
+
+        // Gère le clic sur le bouton thème
+        themeToggleBtn.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            updateThemeIcons();
+        });
+
+        // LOGIQUE DE LA MUSIQUE
+        const musicToggleBtn = document.getElementById('music-toggle');
+        const bgMusic = document.getElementById('bg-music');
+        const musicIcon = document.getElementById('music-icon');
+        let isPlaying = false;
+
+        // Met la musique à 30% du volume pour ne pas exploser les oreilles
+        bgMusic.volume = 0.3;
+
+        musicToggleBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                // Remet l'icône "Play"
+                musicIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>`;
+            } else {
+                bgMusic.play();
+                // Met l'icône "Pause"
+                musicIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>`;
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+</html>
             <div>
                 <label for="edition" class="block text-sm font-medium text-slate-400 mb-2">2. Édition ou Version</label>
                 <select id="edition" disabled class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-500 cursor-not-allowed focus:outline-none focus:border-blue-500 transition-colors disabled:opacity-50">
