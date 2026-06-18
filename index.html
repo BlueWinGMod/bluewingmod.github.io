@@ -3,55 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Espace Professionnel</title>
+    <title>Mon Bordel en Ligne</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
-                extend: {
-                    colors: {
-                        brand: { 500: '#3b82f6', 600: '#2563eb' }
-                    }
-                }
+                extend: {}
             }
         }
     </script>
-    <style>
-        /* Animations personnalisées */
-        .fade-in { animation: fadeIn 1s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 font-sans antialiased">
+<body class="bg-zinc-100 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 transition-colors duration-300 font-sans antialiased selection:bg-red-500 selection:text-white">
 
     <audio id="bg-music" loop>
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
     </audio>
 
-    <nav class="fixed w-full z-50 top-0 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-gray-200 dark:border-slate-800 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <a href="#accueil" class="text-2xl font-black tracking-tighter bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
-                    PORTFOLIO.
+    <nav class="fixed w-full z-50 top-0 bg-zinc-100/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-300 dark:border-zinc-800 transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="text-xl font-black uppercase tracking-widest text-red-600 dark:text-red-500 hover:opacity-80 transition">
+                    MON SITE
                 </a>
                 
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#apropos" class="text-sm font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition">À propos</a>
-                    <a href="#competences" class="text-sm font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition">Compétences</a>
-                    <a href="#projets" class="text-sm font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition">Projets</a>
-                    <a href="#faq" class="text-sm font-semibold hover:text-blue-600 dark:hover:text-blue-400 transition">FAQ</a>
+                <div class="flex space-x-6 items-center">
+                    <a href="#projets" class="font-bold hover:text-red-500 transition">Mes trucs</a>
                     
-                    <div class="h-6 w-px bg-gray-300 dark:bg-slate-700"></div>
+                    <div class="h-6 w-px bg-zinc-400 dark:bg-zinc-700"></div>
 
-                    <button id="music-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-800 transition" title="Jouer/Pauser la musique">
+                    <button id="music-toggle" class="p-2 rounded-lg hover:bg-zinc-300 dark:hover:bg-zinc-800 transition" title="Mettre un peu de son">
                         <svg id="music-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </button>
 
-                    <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-800 transition">
+                    <button id="theme-toggle" class="p-2 rounded-lg hover:bg-zinc-300 dark:hover:bg-zinc-800 transition" title="Allumer/Éteindre la lumière">
                         <svg id="moon-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
                         <svg id="sun-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     </button>
@@ -60,175 +48,72 @@
         </div>
     </nav>
 
-    <section id="accueil" class="min-h-screen flex items-center justify-center pt-20">
-        <div class="max-w-4xl mx-auto px-4 text-center fade-in">
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
-                Bienvenue dans <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">mon univers</span>.
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-600 dark:text-slate-400 mb-10 max-w-3xl mx-auto">
-                Je conçois des solutions numériques modernes, performantes et élégantes. Découvrez mes projets et mon parcours ci-dessous.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#projets" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-lg shadow-blue-500/30">
-                    Voir mes projets
-                </a>
-                <a href="#apropos" class="bg-gray-200 hover:bg-gray-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-gray-900 dark:text-white px-8 py-4 rounded-full font-bold text-lg transition">
-                    En savoir plus
-                </a>
-            </div>
-        </div>
+    <section class="min-h-[80vh] flex flex-col justify-center items-start max-w-5xl mx-auto px-4 pt-20">
+        <h1 class="text-5xl md:text-7xl font-black uppercase tracking-tight mb-6">
+            Ouais, salut.
+        </h1>
+        <p class="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 max-w-2xl mb-8 font-medium">
+            Bienvenue sur ma page. Je code des trucs quand j'ai le temps. La plupart du temps ça casse, mais quand ça marche, je le mets ici.
+        </p>
+        <a href="#projets" class="bg-zinc-900 text-white dark:bg-white dark:text-zinc-950 px-6 py-3 font-bold uppercase tracking-wide hover:bg-red-600 dark:hover:bg-red-500 dark:hover:text-white transition-colors">
+            Voir mes projets de merde ↓
+        </a>
     </section>
 
-    <section id="apropos" class="py-24 bg-gray-100 dark:bg-slate-900 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl font-bold mb-6">Qui suis-je ?</h2>
-                    <p class="text-lg text-gray-600 dark:text-slate-400 mb-6 leading-relaxed">
-                        Passionné par la technologie et le design, je crée des expériences web immersives. Mon approche combine une esthétique minimaliste avec une architecture technique solide.
-                    </p>
-                    <p class="text-lg text-gray-600 dark:text-slate-400 leading-relaxed mb-8">
-                        Que ce soit pour du développement frontend interactif, de la gestion de bases de données complexes ou de l'administration système, je mets un point d'honneur à livrer un code propre et maintenable.
-                    </p>
-                    <div class="grid grid-cols-2 gap-6 border-t border-gray-300 dark:border-slate-800 pt-8">
-                        <div>
-                            <div class="text-4xl font-black text-blue-600 dark:text-blue-400">50+</div>
-                            <div class="text-sm text-gray-500 dark:text-slate-500 font-semibold uppercase mt-1">Projets achevés</div>
-                        </div>
-                        <div>
-                            <div class="text-4xl font-black text-blue-600 dark:text-blue-400">100%</div>
-                            <div class="text-sm text-gray-500 dark:text-slate-500 font-semibold uppercase mt-1">Satisfaction</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative h-96 rounded-2xl overflow-hidden bg-gray-300 dark:bg-slate-800 shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Bureau setup" class="absolute inset-0 w-full h-full object-cover opacity-80 mix-blend-overlay">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="competences" class="py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl font-bold mb-4">Mes Compétences</h2>
-            <p class="text-xl text-gray-600 dark:text-slate-400 mb-16 max-w-2xl mx-auto">Les outils et technologies que j'utilise au quotidien pour donner vie aux idées.</p>
+    <section id="projets" class="py-20 bg-zinc-200 dark:bg-zinc-900 transition-colors duration-300">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-black uppercase mb-12 border-b-4 border-red-500 inline-block pb-2">Mes Projets</h2>
             
-            <div class="grid md:grid-cols-3 gap-8 text-left">
-                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-shadow">
-                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Développement Web</h3>
-                    <p class="text-gray-600 dark:text-slate-400">Création de sites ultra-rapides, responsives et accessibles utilisant les dernières technologies (HTML5, JS, Tailwind).</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-zinc-100 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-800 p-6 hover:border-red-500 dark:hover:border-red-500 transition-colors">
+                    <h3 class="text-2xl font-bold mb-2">Un bot Discord éclaté</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 mb-4">
+                        Je l'ai codé à 3h du mat'. Il est censé modérer le serveur mais pour l'instant il insulte juste les gens au hasard.
+                    </p>
+                    <span class="text-xs font-mono bg-zinc-300 dark:bg-zinc-800 px-2 py-1">Python</span>
                 </div>
-                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-shadow">
-                    <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Architecture Système</h3>
-                    <p class="text-gray-600 dark:text-slate-400">Déploiement, gestion de serveurs, conteneurisation et création de bases de données robustes.</p>
+
+                <div class="bg-zinc-100 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-800 p-6 hover:border-red-500 dark:hover:border-red-500 transition-colors">
+                    <h3 class="text-2xl font-bold mb-2">Ce site web</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 mb-4">
+                        Une longue page qui scrolle. Y'a un mode sombre et de la musique parce que je trouvais ça marrant. C'est tout.
+                    </p>
+                    <span class="text-xs font-mono bg-zinc-300 dark:bg-zinc-800 px-2 py-1">HTML / CSS</span>
                 </div>
-                <div class="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-shadow">
-                    <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center mb-6">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Optimisation SEO</h3>
-                    <p class="text-gray-600 dark:text-slate-400">Amélioration du référencement naturel pour garantir une visibilité maximale sur les moteurs de recherche.</p>
+
+                <div class="bg-zinc-100 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-800 p-6 hover:border-red-500 dark:hover:border-red-500 transition-colors">
+                    <h3 class="text-2xl font-bold mb-2">Clone d'OS.click (Abandonné)</h3>
+                    <p class="text-zinc-600 dark:text-zinc-400 mb-4">
+                        J'ai voulu refaire un site pour télécharger des ISO Windows et Linux. Ça m'a saoulé donc j'ai fait cette page à la place.
+                    </p>
+                    <span class="text-xs font-mono bg-zinc-300 dark:bg-zinc-800 px-2 py-1">JavaScript</span>
+                </div>
+
+                <div class="bg-zinc-100 dark:bg-zinc-950 border-2 border-zinc-300 dark:border-zinc-800 p-6 hover:border-red-500 dark:hover:border-red-500 transition-colors flex items-center justify-center">
+                    <p class="text-zinc-500 dark:text-zinc-600 font-bold uppercase tracking-widest text-center">
+                        Espace vide pour un futur truc qui plantera
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projets" class="py-24 bg-gray-100 dark:bg-slate-900 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold mb-4 text-center">Travaux Récents</h2>
-            <p class="text-xl text-gray-600 dark:text-slate-400 mb-16 text-center">Une sélection de mes meilleurs projets.</p>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group relative rounded-2xl overflow-hidden bg-white dark:bg-slate-950 border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-300">
-                    <div class="h-48 bg-gray-300 dark:bg-slate-800 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Projet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-500 transition-colors">Plateforme E-Commerce</h3>
-                        <p class="text-gray-600 dark:text-slate-400 text-sm mb-4">Un site de vente en ligne complet avec gestion des paiements et tableau de bord administrateur.</p>
-                        <div class="flex gap-2">
-                            <span class="text-xs font-semibold bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">React</span>
-                            <span class="text-xs font-semibold bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">Node.js</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group relative rounded-2xl overflow-hidden bg-white dark:bg-slate-950 border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-300">
-                    <div class="h-48 bg-gray-300 dark:bg-slate-800 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Projet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-500 transition-colors">Dashboard Analytique</h3>
-                        <p class="text-gray-600 dark:text-slate-400 text-sm mb-4">Interface de visualisation de données en temps réel pour le suivi des performances financières.</p>
-                        <div class="flex gap-2">
-                            <span class="text-xs font-semibold bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">Vue.js</span>
-                            <span class="text-xs font-semibold bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">Python</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group relative rounded-2xl overflow-hidden bg-white dark:bg-slate-950 border border-gray-200 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-300">
-                    <div class="h-48 bg-gray-300 dark:bg-slate-800 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80" alt="Projet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2 group-hover:text-blue-500 transition-colors">App Finance Mobile</h3>
-                        <p class="text-gray-600 dark:text-slate-400 text-sm mb-4">Application de gestion budgétaire avec synchronisation bancaire sécurisée.</p>
-                        <div class="flex gap-2">
-                            <span class="text-xs font-semibold bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">Swift</span>
-                            <span class="text-xs font-semibold bg-gray-100 dark:bg-slate-800 px-3 py-1 rounded-full">Firebase</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="faq" class="py-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold mb-12 text-center">Questions Fréquentes</h2>
-            
-            <div class="space-y-6">
-                <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-6 rounded-2xl">
-                    <h3 class="text-lg font-bold mb-2">Comment se déroule un projet type ?</h3>
-                    <p class="text-gray-600 dark:text-slate-400 text-sm">Nous commençons par une phase d'analyse de vos besoins, suivie d'une proposition de maquette. Une fois validée, le développement commence avec des retours réguliers jusqu'à la livraison finale.</p>
-                </div>
-                <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-6 rounded-2xl">
-                    <h3 class="text-lg font-bold mb-2">Quels sont vos délais habituels ?</h3>
-                    <p class="text-gray-600 dark:text-slate-400 text-sm">Cela dépend de la complexité du projet. Un site vitrine prend généralement entre 2 et 3 semaines, tandis qu'une application complexe peut nécessiter plusieurs mois.</p>
-                </div>
-                <div class="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 p-6 rounded-2xl">
-                    <h3 class="text-lg font-bold mb-2">Proposez-vous de la maintenance ?</h3>
-                    <p class="text-gray-600 dark:text-slate-400 text-sm">Oui, je propose des forfaits de maintenance pour assurer la sécurité, les mises à jour et les petites évolutions de votre projet après sa mise en ligne.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-white dark:bg-slate-950 border-t border-gray-200 dark:border-slate-900 py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500 dark:text-slate-600 font-medium">
-            &copy; <span id="year"></span> Portfolio. Tous droits réservés. Construit avec passion.
-        </div>
+    <footer class="bg-zinc-100 dark:bg-zinc-950 py-10 border-t border-zinc-300 dark:border-zinc-900 text-center">
+        <p class="text-zinc-500 font-mono text-sm">
+            © <span id="year"></span>. Fait à l'arrache. 
+        </p>
     </footer>
 
     <script>
-        // Met à jour l'année dans le footer
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // LOGIQUE DU THÈME SOMBRE / CLAIR
+        // MODE SOMBRE
         const themeToggleBtn = document.getElementById('theme-toggle');
         const darkIcon = document.getElementById('moon-icon');
         const lightIcon = document.getElementById('sun-icon');
         const html = document.documentElement;
 
-        // Fonction pour mettre à jour les icônes
-        function updateThemeIcons() {
+        function updateIcons() {
             if (html.classList.contains('dark')) {
                 darkIcon.classList.remove('hidden');
                 lightIcon.classList.add('hidden');
@@ -237,191 +122,31 @@
                 darkIcon.classList.add('hidden');
             }
         }
+        updateIcons();
 
-        // Vérifie le thème initial
-        updateThemeIcons();
-
-        // Gère le clic sur le bouton thème
         themeToggleBtn.addEventListener('click', () => {
             html.classList.toggle('dark');
-            updateThemeIcons();
+            updateIcons();
         });
 
-        // LOGIQUE DE LA MUSIQUE
-        const musicToggleBtn = document.getElementById('music-toggle');
+        // LECTEUR MUSIQUE
+        const musicBtn = document.getElementById('music-toggle');
         const bgMusic = document.getElementById('bg-music');
         const musicIcon = document.getElementById('music-icon');
-        let isPlaying = false;
+        let playing = false;
+        bgMusic.volume = 0.4;
 
-        // Met la musique à 30% du volume pour ne pas exploser les oreilles
-        bgMusic.volume = 0.3;
-
-        musicToggleBtn.addEventListener('click', () => {
-            if (isPlaying) {
+        musicBtn.addEventListener('click', () => {
+            if (playing) {
                 bgMusic.pause();
-                // Remet l'icône "Play"
                 musicIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>`;
             } else {
                 bgMusic.play();
-                // Met l'icône "Pause"
                 musicIcon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>`;
             }
-            isPlaying = !isPlaying;
+            playing = !playing;
         });
     </script>
 </body>
-</html>
-            <div>
-                <label for="edition" class="block text-sm font-medium text-slate-400 mb-2">2. Édition ou Version</label>
-                <select id="edition" disabled class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-500 cursor-not-allowed focus:outline-none focus:border-blue-500 transition-colors disabled:opacity-50">
-                    <option value="">En attente de l'OS...</option>
-                </select>
-            </div>
-
-            <div>
-                <label for="arch" class="block text-sm font-medium text-slate-400 mb-2">3. Architecture</label>
-                <select id="arch" disabled class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-500 cursor-not-allowed focus:outline-none focus:border-blue-500 transition-colors disabled:opacity-50">
-                    <option value="">En attente de l'édition...</option>
-                </select>
-            </div>
-
-            <div>
-                <label for="lang" class="block text-sm font-medium text-slate-400 mb-2">4. Langue</label>
-                <select id="lang" disabled class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-slate-500 cursor-not-allowed focus:outline-none focus:border-blue-500 transition-colors disabled:opacity-50">
-                    <option value="">En attente de l'architecture...</option>
-                </select>
-            </div>
-
-            <div id="result-box" class="hidden pt-6 border-t border-slate-800 space-y-4 animate-fade-in">
-                <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs space-y-2">
-                    <p><span class="text-slate-500">Fichier :</span> <span id="res-file" class="text-indigo-300 break-all"></span></p>
-                    <p><span class="text-slate-500">SHA-256 :</span> <span id="res-sha" class="text-emerald-400 break-all"></span></p>
-                </div>
-                <a id="download-btn" href="#" target="_blank" class="w-full block text-center bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold px-6 py-3.5 rounded-xl transition shadow-lg shadow-indigo-950/50">
-                    Télécharger l'ISO officielle
-                </a>
-            </div>
-
-        </div>
-    </main>
-
-    <footer class="border-t border-slate-900 bg-slate-950/80 text-center py-6 text-xs text-slate-500">
-        <p>Ce site ne stocke aucun fichier. Tous les téléchargements pointent vers des serveurs originaux ou vérifiés. Faites gaffe comme même et vérifiez les isos vous même avec VirusTotal et le hash</p>
-    </footer>
-
-    <script>
-        const isoDatabase = [
-            { os: "Windows XP", edition: "Professional (SP3)", arch: "x86", lang: "Français", file: "fr_windows_xp_professional_with_service_pack_3_x86_cd_x14-80428.iso", sha: "ad14bc471d440dbdfbe49c00b0314227318357eb", url: "https://archive.org/download/FrWindowsXpProfessionalWithServicePack3X86CdX1480428/fr_windows_xp_professional_with_service_pack_3_x86_cd_x14-80428.iso" },
-            { os: "Windows 7", edition: "Ultimate (SP1)", arch: "x64", lang: "Français", file: "fr_windows_7_ultimate_with_sp1_x64_dvd_u_677299.iso", sha: "6144da60098f447781b09b5523b0f592ba466bfb", url: "https://archive.org/download/fr_windows_7_ultimate_with_sp1_x64_dvd_u_677299_202004/fr_windows_7_ultimate_with_sp1_x64_dvd_u_677299.iso" },
-            { os: "Windows 10", edition: "22H2 (Home / Pro)", arch: "x64", lang: "Français", file: "Win10_22H2_French_x64v1.iso", sha: "3aa882c20a1df27756f709115f02905d21b7ff3d404d538e1f576e3d23194511", url: "https://software.download.prss.microsoft.com/db/Win10_22H2_French_x64v1.iso" },
-            { os: "Windows 11", edition: "23H2 (Multi-Edition)", arch: "x64", lang: "Français", file: "Win11_23H2_French_x64v2.iso", sha: "1c2a07c3... (exemple)", url: "https://software.download.prss.microsoft.com/db/Win11_23H2_French_x64v2.iso" }
-        ];
-
-        // Récupération des éléments HTML
-        const selectOs = document.getElementById('os');
-        const selectEdition = document.getElementById('edition');
-        const selectArch = document.getElementById('arch');
-        const selectLang = document.getElementById('lang');
-        const resultBox = document.getElementById('result-box');
-        const resFile = document.getElementById('res-file');
-        const resSha = document.getElementById('res-sha');
-        const downloadBtn = document.getElementById('download-btn');
-
-        // Initialisation : Charger les OS uniques
-        const uniqueOs = [...new Set(isoDatabase.map(item => item.os))];
-        uniqueOs.forEach(os => {
-            let opt = document.createElement('option');
-            opt.value = os;
-            opt.textContent = os;
-            selectOs.appendChild(opt);
-        });
-
-        // Événement 1 : Changement d'OS
-        selectOs.addEventListener('change', () => {
-            resetDropdowns([selectEdition, selectArch, selectLang]);
-            resultBox.classList.add('hidden');
-            
-            if (selectOs.value) {
-                const filtered = isoDatabase.filter(item => item.os === selectOs.value);
-                const editions = [...new Set(filtered.map(item => item.edition))];
-                enableDropdown(selectEdition, editions, "Choisir une édition...");
-            }
-        });
-
-        // Événement 2 : Changement d'Édition
-        selectEdition.addEventListener('change', () => {
-            resetDropdowns([selectArch, selectLang]);
-            resultBox.classList.add('hidden');
-
-            if (selectEdition.value) {
-                const filtered = isoDatabase.filter(item => item.os === selectOs.value && item.edition === selectEdition.value);
-                const architectures = [...new Set(filtered.map(item => item.arch))];
-                enableDropdown(selectArch, architectures, "Choisir une architecture...");
-            }
-        });
-
-        // Événement 3 : Changement d'Architecture
-        selectArch.addEventListener('change', () => {
-            resetDropdowns([selectLang]);
-            resultBox.classList.add('hidden');
-
-            if (selectArch.value) {
-                const filtered = isoDatabase.filter(item => 
-                    item.os === selectOs.value && 
-                    item.edition === selectEdition.value && 
-                    item.arch === selectArch.value
-                );
-                const languages = [...new Set(filtered.map(item => item.lang))];
-                enableDropdown(selectLang, languages, "Choisir une langue...");
-            }
-        });
-
-        // Événement 4 : Changement de Langue ➔ Affiche le résultat
-        selectLang.addEventListener('change', () => {
-            if (selectLang.value) {
-                const finalMatch = isoDatabase.find(item => 
-                    item.os === selectOs.value && 
-                    item.edition === selectEdition.value && 
-                    item.arch === selectArch.value &&
-                    item.lang === selectLang.value
-                );
-
-                if (finalMatch) {
-                    resFile.textContent = finalMatch.file;
-                    resSha.textContent = finalMatch.sha;
-                    downloadBtn.href = finalMatch.url;
-                    resultBox.classList.remove('hidden');
-                }
-            } else {
-                resultBox.classList.add('hidden');
-            }
-        });
-
-        // Fonctions utilitaires pour manipuler les dropdowns
-        function resetDropdowns(dropdowns) {
-            dropdowns.forEach(dropdown => {
-                dropdown.innerHTML = '<option value="">En attente du choix précédent...</option>';
-                dropdown.disabled = true;
-                dropdown.classList.replace('border-slate-700', 'border-slate-800');
-                dropdown.classList.replace('text-slate-200', 'text-slate-500');
-                dropdown.classList.add('cursor-not-allowed');
-            });
-        }
-
-        function enableDropdown(dropdown, items, defaultText) {
-            dropdown.innerHTML = `<option value="">${defaultText}</option>`;
-            items.forEach(item => {
-                let opt = document.createElement('option');
-                opt.value = item;
-                opt.textContent = item;
-                dropdown.appendChild(opt);
-            });
-            dropdown.disabled = false;
-            dropdown.classList.replace('border-slate-800', 'border-slate-700');
-            dropdown.classList.replace('text-slate-500', 'text-slate-200');
-            dropdown.classList.remove('cursor-not-allowed');
-        }
-    </script>
-</body>
-                  </html>
-  
+                    </html>
+                                                                                                                     
